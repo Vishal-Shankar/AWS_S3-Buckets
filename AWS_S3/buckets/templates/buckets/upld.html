@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+    
+        body{
+    
+    background-image: linear-gradient(180deg, rgb(22, 23, 102), rgb(70, 196, 201));
+    }
+    
+        th, td {
+      border-bottom: 1px solid rgb(173, 167, 206);
+    }
+    
+    table{
+    
+        padding: 5px;
+        font-family: serif;
+    }
+    input{
+                margin: 3px;
+             border: 1px solid red; 
+                padding: 7px; 
+                margin-top: 40px;
+                margin-left: 40px;
+            }
+    .text{
+                border-radius:10px 10px;
+                padding: 10px;
+                transition:1s;
+            }
+            .button{
+                color:white;
+                padding:10px;
+                text-align:center;
+                cursor:pointer;
+                background-color: rgb(66, 19, 119);
+                transition: 1s;
+                border-radius:10px 10px;
+            }
+            .button:hover{
+                transform:translate(0,-3px);
+                background:black;
+                box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+            }
+         </style>    
+
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="file" value="Enter File path" name="fp" class="text">
+        <input type="submit" class="button" value="Upload File" name="uf"> 
+    </form>
+    {% if lfs %}
+    <table>
+        <tr>
+            <th><h1>File Name</h1></th>
+            <th><h1>Creation Date</h1></th>
+        </tr>
+        {% for i in lfs %}
+        <tr>
+            <td><h2>{{i}}</h2></td>
+        </tr>
+        {% endfor %}
+    </table>
+        {% endif %}
+
+    
+            <marquee behavior="alternate" direction="">
+                <h1>
+                    {% if messages %}
+                    {% for n in messages %}
+                    <h2 style="color: rgb(116, 28, 28);font-family: monospace; font-size: xx-large;">{{n}}</h2>
+                    {% endfor %}
+                    {% endif %}
+                </h1>
+            </marquee>
+    
+            <div style="height: 670px;"></div>
+        
+</body>
+</html>

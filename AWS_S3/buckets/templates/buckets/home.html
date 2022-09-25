@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<style>
+        *{
+            box-sizing:border-box
+            
+        }
+        div{
+            width:100px ;
+            display:flex;
+            justify-content:space-evenly;
+            align-items:center;
+          
+        }
+        body{
+            background-image: linear-gradient(180deg, rgb(22, 23, 102), rgb(70, 196, 201));
+        }
+        input{
+            margin: 3px;
+         border: 1px solid red; 
+            padding: 7px; 
+        }
+        .text{
+            border-radius:10px 10px;
+            padding: 10px;
+            transition:1s;
+        }
+        .text:hover{
+            box-shadow: inset 0 12px 16px 0 rgba(0,0,0,0.10),0 17px 50px 0 rgba(0,0,0,0.19);
+        } 
+        .button{
+            color:white;
+            padding:10px;
+            text-align:center;
+            cursor:pointer;
+            background-color: rgb(66, 19, 119);
+            transition: 1s;
+            border-radius:10px 10px;
+        }
+        .button:hover{
+            transform:translate(0,-3px);
+            background:black;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        h1{
+            border-radius:10px 10px;
+    
+            transition:1s; 
+        }
+</style>
+
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+ <center style="margin-top: 10%;">
+    <div>
+        <input type="text" placeholder="Enter Access Key Id" name="aid" class="text">
+        <input type="text" placeholder="Enter Seceret Access Key" name="sak" class="text"><br>
+        </div><br><br>
+        <div>
+            <input type="submit" class="button" value="verify" name="log" style="margin-right: 150px;">
+    
+        {% if s %}
+        <button class="button"><a style="color:white" href="{% url 'buckets:login' %}"> Login </a></button>
+        {% endif %}
+    </div>
+   
+   
+   
+    </form>
+ 
+ </center>
+
+    
+        <marquee behavior="alternate" direction="">
+            <h1>
+                {% if messages %}
+                {% for n in messages %}
+                <h2 style="color: rgb(116, 28, 28);font-family: monospace; font-size: xx-large;">{{n}}</h2>
+                {% endfor %}
+                {% endif %}
+            </h1>
+        </marquee>
+        <div style="height:500px ;">
+        </div>
+
+            
+
+
+</body>
+</html>
